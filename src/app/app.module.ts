@@ -8,6 +8,7 @@ import { AlbumComponent } from './album/album.component';
 import { ChansonComponent } from './chanson/chanson.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
       {path: "", redirectTo: "/artiste", pathMatch: "full"},
       {path: "artiste", component: ArtisteComponent}
     ]),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

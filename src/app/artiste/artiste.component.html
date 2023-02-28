@@ -4,16 +4,17 @@
         <p class="leaderboard__name">AJOUTER UN ARTISTE</p>
 
         <form class="form">
-			<input type="email" class="form__field" placeholder="Nom de l'artiste" />
-			<button type="button" class="btn btn--primary btn--inside uppercase">RECHERCHER</button>
+			<input [(ngModel)]="artistName" type="text" name="artistName" class="form__field" placeholder="Nom de l'artiste" />
+			<button  (click)="addArtisteFavoris()" type="button" class="btn btn--primary btn--inside uppercase">RECHERCHER</button>
 		</form>
 
     </div>
 
     <!--LISTE ARTISTE -->
-    <article class="leaderboard__profile">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="ARTISTE" class="leaderboard__picture">
-        <span class="leaderboard__name">Mark Zuckerberg</span>
+
+    <article class="leaderboard__profile" *ngFor="let item of artisteList">
+        <img src="{{item?.images!.length > 0 ? item?.images![2].url : ''}}" alt="ARTISTE" class="leaderboard__picture">
+        <span class="leaderboard__name">{{item?.name}}</span>
         <button type="button" class="btn btn--primary btn--primary2">CONCERTS</button>
         <button type="button" class="btn btn--primary btn--primary2">ALBUMS</button>
     </article>

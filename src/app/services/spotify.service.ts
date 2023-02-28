@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { SpotifyToken } from '../models/spotify-token';
+import { Artiste } from '../models/artiste';
 
 const CLIENT_ID : string = "7e0b6f05ec12427e81c65b01cd474bbf"
-const CLIENT_SECRET: string = "49b8ad9d0aa74d159448c9563010323b"
+const CLIENT_SECRET: string = "7caf59e3892a46289b09ce6a884caa76"
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpotifyService {
 
-  spotifyToken : string | null = null;
+  spotifyToken :  SpotifyToken | null = null;
 
   constructor(public http : HttpClient) { }
 
@@ -22,7 +25,31 @@ export class SpotifyService {
         'Authorization': 'Basic ' + btoa(CLIENT_ID + ':' + CLIENT_SECRET)
         })
       };
-      let x = await lastValueFrom(this.http.post<any>('https://accounts.spotify.com/api/token', body.toString(), httpOptions));
-      this.spotifyToken = x.access_token;
+      let x = await lastValueFrom(this.http.post<SpotifyToken>('https://accounts.spotify.com/api/token', body.toString(), httpOptions));
+      this.spotifyToken = x;
+      console.log(x)
   }
+
+  async getArtistId(artist : string): Promise<string>{
+    const httpOptions = { headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer ' + this.spotifyToken?.access_token
+    })};
+
+    let artisteRecherche = await lastValueFrom(this.http.get<any>('https://api.spotify.com/v1/search?type=artist&offset=0&limit=1&q=' + artist, httpOptions));
+    return artisteRecherche.artists.items[0].id;
+  }
+
+  async addArtisteFavoris(artist : string): Promise<Artiste> {
+    const httpOptions = { headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer ' + this.spotifyToken?.access_token
+    })};
+
+    let artisteRecherche = await lastValueFrom(this.http.get<Artiste>('https://api.spotify.com/v1/artists/' + await this.getArtistId(artist), httpOptions));
+    console.log(artisteRecherche)
+    return artisteRecherche;
+  }
+
+  
 }
