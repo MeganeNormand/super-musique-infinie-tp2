@@ -5,16 +5,23 @@ import { AppComponent } from './app.component';
 import { ArtisteComponent } from './artiste/artiste.component';
 import { ConcertComponent } from './concert/concert.component';
 import { AlbumComponent } from './album/album.component';
+import { ChansonComponent } from './chanson/chanson.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArtisteComponent,
     ConcertComponent,
-    AlbumComponent
+    AlbumComponent,
+    ChansonComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot([
+      {path: "", redirectTo: "/artiste", pathMatch: "full"},
+      {path: "artiste", component: ArtisteComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
