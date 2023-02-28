@@ -7,6 +7,7 @@ import { ConcertComponent } from './concert/concert.component';
 import { AlbumComponent } from './album/album.component';
 import { ChansonComponent } from './chanson/chanson.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
     RouterModule.forRoot([
       {path: "", redirectTo: "/artiste", pathMatch: "full"},
       {path: "artiste", component: ArtisteComponent}
-    ])
+    ]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SpotifyService } from './services/spotify.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'super-musique-infinie-tp2';
+
+  constructor(public spotify : SpotifyService){}
+  async ngOnInit(){
+    this.spotify.connect();
+  }
+  
 }
