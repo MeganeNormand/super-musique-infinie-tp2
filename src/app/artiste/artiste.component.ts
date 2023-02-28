@@ -13,8 +13,16 @@ export class ArtisteComponent {
   artist?: Artiste;
   artisteList: Artiste[] = [];
   artisteId: string = "";
+  jsonDataProfile : string | null = null;
 
   constructor(private spotify: SpotifyService) { }
+
+  ngOnInit() {
+    this.jsonDataProfile = localStorage.getItem("listeArtiste");
+    if(this.jsonDataProfile != null){
+      this.artisteList = JSON.parse(this.jsonDataProfile);
+    }
+  }
 
   async addArtisteFavoris(): Promise<void> {
     if (this.artistName != "") {
@@ -24,8 +32,18 @@ export class ArtisteComponent {
       this.artisteList.push(this.artist);
       console.log(this.artist)
     }
-
+    this.sauvegarderListeArtiste();
 
   }
+
+  async sauvegarderListeArtiste(){
+    localStorage.setItem("listeArtiste", JSON.stringify(this.artisteList))
+  }
+
+  async viderFavoris(){
+    localStorage.clear();
+    this.artisteList = [];
+  }
+
 
 }

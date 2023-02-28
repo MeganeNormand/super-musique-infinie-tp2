@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     RouterModule.forRoot([
       {path: "", redirectTo: "/artiste", pathMatch: "full"},
-      {path: "artiste", component: ArtisteComponent}
+      {path: "artiste", component: ArtisteComponent},
+      {path: "concert", component: ConcertComponent}
     ]),
     HttpClientModule,
     FormsModule

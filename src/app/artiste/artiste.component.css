@@ -161,6 +161,7 @@ a:hover {
 }
 .btn--inside {
     margin-left: -96px;
+    margin-right: 100px;
 }
 .form__field {
     width: 360px;

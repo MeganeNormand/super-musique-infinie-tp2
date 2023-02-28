@@ -3,10 +3,12 @@
     <div >
         <p class="leaderboard__name">AJOUTER UN ARTISTE</p>
 
-        <form class="form">
+        <form class="form" style="display:contents">
 			<input [(ngModel)]="artistName" type="text" name="artistName" class="form__field" placeholder="Nom de l'artiste" />
 			<button  (click)="addArtisteFavoris()" type="button" class="btn btn--primary btn--inside uppercase">RECHERCHER</button>
 		</form>
+
+        <button (click)="viderFavoris()" type="button" class="btn btn--primary btn--inside uppercase" style="margin-right: 100px;">VIDER LA LISTE</button>
 
     </div>
 
