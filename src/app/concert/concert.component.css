@@ -55,7 +55,7 @@
 .leaderboard__profile {
     display: inline-flex;;
     height: 100px;
-    width: 30%;
+    width: 95%;
     grid-template-columns: 1fr 3fr 1fr;
     align-items: center;
     padding: 10px 30px 10px 10px;
@@ -110,7 +110,6 @@ body {
 :root {
     background: #f5f6fa;
     color: #9c9c9c;
-    font: 1rem "Comic Sans MS", sans-serif;
 }
 html, body, .container {
     height: 100%;

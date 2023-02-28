@@ -7,10 +7,10 @@
 
     <!--LISTE ARTISTE -->
 
-    <article class="leaderboard__profile">
-        <span class="leaderboard__name">DATE</span>
-        <span class="leaderboard__name">PAYS</span>
-        <span class="leaderboard__name">VILLE</span>
+    <article class="leaderboard__profile" *ngFor="let item of concertList">
+        <span class="leaderboard__name">{{item.datetime}}</span>
+        <span class="leaderboard__name">{{item.venue.country}}</span>
+        <span class="leaderboard__name">{{item.venue.city}}</span>
     </article>
 
 

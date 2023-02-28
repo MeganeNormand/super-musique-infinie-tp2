@@ -54,8 +54,4 @@ export class SpotifyService {
     console.log(artisteRecherche)
     return artisteRecherche;
   }
-
- 
-
-
 }
