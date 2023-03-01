@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DatecustomPipe } from './pipes/datecustom.pipe';
+import { GoogleMap } from '@angular/google-maps';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { DatecustomPipe } from './pipes/datecustom.pipe';
       {path: "concert/:artisteName", component: ConcertComponent}
     ]),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
