@@ -22,19 +22,21 @@ export class ConcertComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.initMAp();
+    
     this.afficherConcert();
 
+
+    console.log(this.concertList)
   }
 
   async afficherConcert() {
     if (this.artisteName != null) {
       this.concertList = await this.bandintown.getConcert(this.artisteName);
     }
-    console.log(this.concertList);
+    this.initMAp(this.concertList)
   }
 
-  initMAp() {
+  initMAp(listeConcert: Concert[]) {
     //MAP
     let map: google.maps.Map;
 
@@ -51,14 +53,15 @@ export class ConcertComponent implements OnInit {
         mapTypeId: google.maps.MapTypeId.TERRAIN
       });
 
-      var marker = new google.maps.Marker({
-        position: this.myLatLng,
-        title: "Hello World!"
-      });
-
-      marker.setMap(map);
+      for(var concert of listeConcert){
+        var marker = new google.maps.Marker({
+          position: { lat: Number(concert.venue.latitude), lng: Number(concert.venue.longitude)},
+          map
+        });
+      }
+      
     });
+    console.log(listeConcert)
   }
-
   
 }
