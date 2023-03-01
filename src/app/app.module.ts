@@ -9,6 +9,7 @@ import { ChansonComponent } from './chanson/chanson.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DatecustomPipe } from './pipes/datecustom.pipe';
 
 @NgModule({
   declarations: [
@@ -16,14 +17,15 @@ import { FormsModule } from '@angular/forms';
     ArtisteComponent,
     ConcertComponent,
     AlbumComponent,
-    ChansonComponent
+    ChansonComponent,
+    DatecustomPipe
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       {path: "", redirectTo: "/artiste", pathMatch: "full"},
       {path: "artiste", component: ArtisteComponent},
-      {path: "concert", component: ConcertComponent}
+      {path: "concert/:artisteName", component: ConcertComponent}
     ]),
     HttpClientModule,
     FormsModule
