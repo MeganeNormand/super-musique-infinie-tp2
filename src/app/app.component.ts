@@ -10,7 +10,9 @@ export class AppComponent {
   title = 'super-musique-infinie-tp2';
 
   constructor(public spotify : SpotifyService){}
-  async ngOnInit(){
+
+
+  ngOnInit(){
     this.spotify.connect();
   }
   

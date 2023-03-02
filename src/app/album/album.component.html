@@ -1,1 +1,16 @@
-<p>album works!</p>
+<main class="leaderboard__profiles">
+
+    <div >
+        <h1 class="leaderboard__name" style="text-transform:uppercase;">VOICI LES ALBUMS DE {{artisteName}}</h1>
+    </div>
+
+    <!--LISTE ALBUMS -->
+
+    <article class="leaderboard__profile" *ngFor="let item of albumList">
+        <img src="{{item.images[2].url}}" alt="ARTISTE" class="leaderboard__picture">
+        <span class="leaderboard__name">{{item.name}}</span>
+        <button type="button" class="btn btn--primary btn--primary2">CHANSONS</button>
+    </article>
+
+
+</main>

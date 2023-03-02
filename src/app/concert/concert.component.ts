@@ -24,8 +24,6 @@ export class ConcertComponent implements OnInit {
   ngOnInit(): void {
     
     this.afficherConcert();
-
-
     console.log(this.concertList)
   }
 
