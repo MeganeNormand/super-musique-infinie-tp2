@@ -15,10 +15,10 @@
     <!--LISTE ARTISTE -->
 
     <article class="leaderboard__profile" *ngFor="let item of artisteList">
-        <img src="{{item?.images!.length > 0 ? item?.images![2].url : ''}}" alt="ARTISTE" class="leaderboard__picture">
+        <img src="{{item?.images!.length > 0 ? item?.images![2].url : ''}}" alt="ARTISTE" class="leaderboard__picture"/>
         <span class="leaderboard__name">{{item?.name}}</span>
         <button type="button" class="btn btn--primary btn--primary2" [routerLink]="['/concert', item.name]">CONCERTS</button>
-        <button type="button" class="btn btn--primary btn--primary2">ALBUMS</button>
+        <button type="button" class="btn btn--primary btn--primary2" [routerLink]="['/album', item.name]">ALBUMS</button>
     </article>
 
 

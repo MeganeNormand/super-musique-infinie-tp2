@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { SpotifyToken } from '../models/spotify-token';
 import { Artiste } from '../models/artiste';
 import { Album } from '../models/album';
+import { Chanson } from '../models/chanson';
 
 const CLIENT_ID: string = "7e0b6f05ec12427e81c65b01cd474bbf"
 const CLIENT_SECRET: string = "7caf59e3892a46289b09ce6a884caa76"
@@ -57,7 +58,7 @@ export class SpotifyService {
 
 
   async getAlbum(artist: string): Promise<Album[]> {
-    if(this.spotifyToken == null){
+    if (this.spotifyToken == null) {
       await this.connect();
     }
 
@@ -68,8 +69,26 @@ export class SpotifyService {
       })
     };
 
-    let albums = await lastValueFrom(this.http.get<{items:Album[]}>('https://api.spotify.com/v1/artists/'+ await this.getArtistId(artist) + '/albums', httpOptions));
+    let albums = await lastValueFrom(this.http.get<{ items: Album[] }>('https://api.spotify.com/v1/artists/' + await this.getArtistId(artist) + '/albums', httpOptions));
     return albums.items;
 
+  }
+
+
+  async getChanson(idAlbum: string): Promise<Chanson[]> {
+
+    if (this.spotifyToken == null) {
+      await this.connect();
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.spotifyToken?.access_token
+      })
+    };
+
+    let chansons = await lastValueFrom(this.http.get<{items: Chanson[]}>('https://api.spotify.com/v1/albums/' + idAlbum + '/tracks', httpOptions));
+    console.log(chansons.items);
+    return chansons.items;
   }
 }

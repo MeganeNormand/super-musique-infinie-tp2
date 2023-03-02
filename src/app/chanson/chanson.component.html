@@ -1,1 +1,17 @@
-<p>chanson works!</p>
+<main class="leaderboard__profiles">
+
+    <div>
+        <p class="leaderboard__name">VOICI LES CHANSONS DE L'ALBUM </p>
+
+    </div>
+
+    <!--LISTE ARTISTE -->
+
+    <article class="leaderboard__profile" *ngFor="let item of chansonList">
+        <span class="leaderboard__name">{{item.name}}</span>
+        <button type="button" class="btn btn--primary btn--primary2">ECOUTER</button>
+    </article>
+
+
+
+</main>

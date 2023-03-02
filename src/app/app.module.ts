@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { DatecustomPipe } from './pipes/datecustom.pipe';
 import { GoogleMap } from '@angular/google-maps';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -29,10 +30,12 @@ import { GoogleMapsModule } from '@angular/google-maps';
       {path: "artiste", component: ArtisteComponent},
       {path: "concert/:artisteName", component: ConcertComponent},
       {path: "album/:artisteName", component: AlbumComponent},
+      {path: "chanson/:albumId/:artisteName", component: ChansonComponent}
     ]),
     HttpClientModule,
     FormsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    YouTubePlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
