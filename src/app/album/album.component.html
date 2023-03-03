@@ -9,7 +9,7 @@
     <article class="leaderboard__profile" *ngFor="let item of albumList">
         <img src="{{item.images[2].url}}" alt="ARTISTE" class="leaderboard__picture">
         <span class="leaderboard__name">{{item.name}}</span>
-        <button type="button" class="btn btn--primary btn--primary2" [routerLink]="['/chanson', item.id, item.name]">CHANSONS</button>
+        <button type="button" class="btn btn--primary btn--primary2" [routerLink]="['/chanson', item.id, item.artists[0].name]">CHANSONS</button>
     </article>
 
 

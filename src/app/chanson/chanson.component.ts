@@ -1,22 +1,32 @@
+import { YoutubeService } from './../services/youtube.service';
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../services/spotify.service';
 import { Chanson } from '../models/chanson';
 import { ActivatedRoute} from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
+const youtubeURL = "https://www.youtube.com/embed/";
 @Component({
   selector: 'app-chanson',
   templateUrl: './chanson.component.html',
   styleUrls: ['./chanson.component.css']
 })
+
 export class ChansonComponent{
 
   chansonList: Chanson[] = [];
   albumId: string | null = null;
-  albumName: string | null = null;
+  artisteName: string | null = null;
+  videoId : string = "";
+  videoUrl ?: SafeResourceUrl;
 
-  constructor(private spotify: SpotifyService, private route: ActivatedRoute) {
+  videoSearchText : string = "";
+
+
+
+  constructor(private spotify: SpotifyService, private route: ActivatedRoute, public youtube: YoutubeService, public sanitizer : DomSanitizer) {
     this.albumId = this.route.snapshot.paramMap.get("albumId");
-    this.albumName = this.route.snapshot.paramMap.get("albumName");
+    this.artisteName = this.route.snapshot.paramMap.get("artisteName");
   }
 
   ngOnInit(): void {
@@ -27,7 +37,18 @@ export class ChansonComponent{
     if(this.albumId != null){
       this.chansonList = await this.spotify.getChanson(this.albumId);
     }
-    
   }
 
+    async searchVideo(albumName: string):Promise<void>{
+      if(this.artisteName != null && this.albumId != null){
+        this.videoId = await this.youtube.getVideo(this.artisteName, albumName);
+      }
+   
+    this.getSafeUrl(); 
+  }
+
+  getSafeUrl() : void{
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(youtubeURL + this.videoId)
+  }
+  
 }

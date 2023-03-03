@@ -10,19 +10,16 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DatecustomPipe } from './pipes/datecustom.pipe';
-import { GoogleMap } from '@angular/google-maps';
-import { GoogleMapsModule } from '@angular/google-maps';
-import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     ArtisteComponent,
     ConcertComponent,
     AlbumComponent,
     ChansonComponent,
     DatecustomPipe
-  ],
+   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
@@ -33,9 +30,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
       {path: "chanson/:albumId/:artisteName", component: ChansonComponent}
     ]),
     HttpClientModule,
-    FormsModule,
-    GoogleMapsModule,
-    YouTubePlayerModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

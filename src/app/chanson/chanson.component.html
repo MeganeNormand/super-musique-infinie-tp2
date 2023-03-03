@@ -1,16 +1,31 @@
 <main class="leaderboard__profiles">
 
     <div>
-        <p class="leaderboard__name">VOICI LES CHANSONS DE L'ALBUM </p>
+        <p class="leaderboard__name">VOICI LES CHANSONS DE L'ALBUM
+        </p>
 
     </div>
 
     <!--LISTE ARTISTE -->
+    <div>
+        <article class="leaderboard__profile" *ngFor="let item of chansonList" style="margin: 10px;">
+            <span class="leaderboard__name">{{item.name}}</span>
+            <button type="button" class="btn btn--primary btn--primary2" (click)="searchVideo(item.name)">ECOUTER</button>
+        </article>
 
-    <article class="leaderboard__profile" *ngFor="let item of chansonList">
-        <span class="leaderboard__name">{{item.name}}</span>
-        <button type="button" class="btn btn--primary btn--primary2">ECOUTER</button>
-    </article>
+        <div>
+            <p class="leaderboard__name">VIDEO</p>
+
+            <div class="videoPlayer" *ngIf="videoUrl != undefined">
+                <iframe width="560" height="315" [src]="videoUrl" title="YouTube video player" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+                web-share" allowfullscreen></iframe>
+            
+              </div>
+
+        </div>
+    </div>
+
 
 
 

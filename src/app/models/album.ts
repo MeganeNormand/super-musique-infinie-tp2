@@ -1,11 +1,4 @@
 export interface Album {
-    
-    external_urls: {
-
-        spotify: string
-
-    },
-
     id: string,
 
     images: {
@@ -17,5 +10,9 @@ export interface Album {
         width: number
 
     }[],
-    name: string
+    name: string,
+    artists: 
+        {
+          name: string,
+        }[]
 }
