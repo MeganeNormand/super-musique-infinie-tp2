@@ -4,6 +4,7 @@ import { SpotifyService } from '../services/spotify.service';
 import { Chanson } from '../models/chanson';
 import { ActivatedRoute} from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 const youtubeURL = "https://www.youtube.com/embed/";
 @Component({
@@ -13,7 +14,7 @@ const youtubeURL = "https://www.youtube.com/embed/";
 })
 
 export class ChansonComponent{
-
+  language: string = 'fr';
   chansonList: Chanson[] = [];
   albumId: string | null = null;
   artisteName: string | null = null;
@@ -24,7 +25,8 @@ export class ChansonComponent{
 
 
 
-  constructor(private spotify: SpotifyService, private route: ActivatedRoute, public youtube: YoutubeService, public sanitizer : DomSanitizer) {
+  constructor(private spotify: SpotifyService, private route: ActivatedRoute, public youtube: YoutubeService, public sanitizer : DomSanitizer, public translator: TranslateService) {
+    translator.setDefaultLang(this.language);
     this.albumId = this.route.snapshot.paramMap.get("albumId");
     this.artisteName = this.route.snapshot.paramMap.get("artisteName");
   }

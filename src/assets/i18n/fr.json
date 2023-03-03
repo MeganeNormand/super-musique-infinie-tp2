@@ -1,0 +1,19 @@
+{
+    "album":{
+        "title": "VOICI LES ALBUMS DE",
+        "chansons": "CHANSONS"
+    },
+    "artiste":{
+        "title": "AJOUTER UN ARTISTE",
+        "rechercher": "RECHERCHER",
+        "vider": "VIDER LA LISTE",
+        "concerts": "CONCERTS",
+        "albums": "ALBUMS"
+    },
+    "chanson":{
+        "title": "CHANSONS",
+        "info": "VIDÉO À LA FIN",
+        "ecouter": "ÉCOUTER",
+        "video": "VIDÉO"
+    }
+}

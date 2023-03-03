@@ -1,14 +1,14 @@
 <main class="leaderboard__profiles">
 
     <div >
-        <p class="leaderboard__name">AJOUTER UN ARTISTE</p>
+        <p class="leaderboard__name">{{'artiste.title' | translate}}</p>
 
         <form class="form" style="display:contents">
-			<input [(ngModel)]="artistName" type="text" name="artistName" class="form__field" placeholder="Nom de l'artiste" />
-			<button  (click)="addArtisteFavoris()" type="button" class="btn btn--primary btn--inside uppercase">RECHERCHER</button>
+			<input [(ngModel)]="artistName" type="text" name="artistName" class="form__field"/>
+			<button  (click)="addArtisteFavoris()" type="button" class="btn btn--primary btn--inside uppercase">{{'artiste.rechercher' | translate}}</button>
 		</form>
 
-        <button (click)="viderFavoris()" type="button" class="btn btn--primary btn--inside uppercase" style="margin-right: 100px;">VIDER LA LISTE</button>
+        <button (click)="viderFavoris()" type="button" class="btn btn--primary btn--inside uppercase" style="margin-right: 100px;">{{'artiste.vider' | translate}}</button>
 
     </div>
 
@@ -17,8 +17,8 @@
     <article class="leaderboard__profile" *ngFor="let item of artisteList">
         <img src="{{item?.images!.length > 0 ? item?.images![2].url : ''}}" alt="ARTISTE" class="leaderboard__picture"/>
         <span class="leaderboard__name">{{item?.name}}</span>
-        <button type="button" class="btn btn--primary btn--primary2" [routerLink]="['/concert', item.name]">CONCERTS</button>
-        <button type="button" class="btn btn--primary btn--primary2" [routerLink]="['/album', item.name]">ALBUMS</button>
+        <button type="button" class="btn btn--primary btn--primary2" [routerLink]="['/concert', item.name]">{{'artiste.concerts' | translate}}</button>
+        <button type="button" class="btn btn--primary btn--primary2" [routerLink]="['/album', item.name]">{{'artiste.albums' | translate}}</button>
     </article>
 
 

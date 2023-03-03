@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Album } from '../models/album';
 import { SpotifyService } from '../services/spotify.service';
 
@@ -12,11 +13,13 @@ import { SpotifyService } from '../services/spotify.service';
 
 export class AlbumComponent {
 
+  language: string = 'fr';
   albumList: Album[] = [];
   artisteName: string | null = null;
 
-  constructor(private spotify: SpotifyService, public route: ActivatedRoute) { 
+  constructor(private spotify: SpotifyService, public route: ActivatedRoute, public translator: TranslateService) { 
     this.artisteName = this.route.snapshot.paramMap.get("artisteName");
+    translator.setDefaultLang(this.language);
   }
 
   ngOnInit(){
