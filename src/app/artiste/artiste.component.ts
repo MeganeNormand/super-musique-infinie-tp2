@@ -15,36 +15,36 @@ export class ArtisteComponent {
   artist?: Artiste;
   artisteList: Artiste[] = [];
   artisteId: string = "";
-  jsonDataProfile : string | null = null;
+  jsonDataProfile: string | null = null;
 
-  constructor(private spotify: SpotifyService, public translator: TranslateService) { 
+  constructor(private spotify: SpotifyService, public translator: TranslateService) {
     translator.setDefaultLang(this.language);
   }
 
   ngOnInit() {
     this.jsonDataProfile = localStorage.getItem("listeArtiste");
-    if(this.jsonDataProfile != null){
+    if (this.jsonDataProfile != null) {
       this.artisteList = JSON.parse(this.jsonDataProfile);
     }
   }
 
   async addArtisteFavoris(): Promise<void> {
     if (this.artistName != "") {
-      
-      this.artist = await this.spotify.addArtisteFavoris(this.artistName);
 
-      this.artisteList.push(this.artist);
-      console.log(this.artist)
+      this.artist = await this.spotify.addArtisteFavoris(this.artistName);
+      if (!this.artisteList.map(artist => artist.id).includes(this.artist.id)) {
+        this.artisteList.push(this.artist);
+      }
     }
     this.sauvegarderListeArtiste();
 
   }
 
-  async sauvegarderListeArtiste(){
+  async sauvegarderListeArtiste() {
     localStorage.setItem("listeArtiste", JSON.stringify(this.artisteList))
   }
 
-  async viderFavoris(){
+  async viderFavoris() {
     localStorage.clear();
     this.artisteList = [];
   }
