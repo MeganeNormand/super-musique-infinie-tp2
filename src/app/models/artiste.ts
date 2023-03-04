@@ -1,14 +1,4 @@
 export interface Artiste {
-
-    external_urls: {
-        spotify: string
-    },
-    followers: {
-        href: string,
-        total: number
-    },
-    genres: string[],
-    href: string,
     id: string,
     images:
     {
@@ -16,9 +6,5 @@ export interface Artiste {
         height: number,
         width: number
     }[],
-    name: string,
-    popularity: number,
-    type: string,
-    uri: string
-
+    name: string
 }
