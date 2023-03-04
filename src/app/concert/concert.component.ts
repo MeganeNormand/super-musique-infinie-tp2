@@ -3,6 +3,7 @@ import { BandsintownService } from './../services/bandsintown.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Loader } from "@googlemaps/js-api-loader"
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-concert',
@@ -11,9 +12,11 @@ import { Loader } from "@googlemaps/js-api-loader"
 })
 export class ConcertComponent implements OnInit {
   artisteName: string | null = null;
+  language: string = 'fr';
 
-  constructor(private bandintown: BandsintownService, public route: ActivatedRoute) {
+  constructor(private bandintown: BandsintownService, public route: ActivatedRoute,public translator: TranslateService) {
     this.artisteName = this.route.snapshot.paramMap.get("artisteName");
+    translator.setDefaultLang(this.language);
   }
 
 

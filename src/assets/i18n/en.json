@@ -1,0 +1,19 @@
+{
+    "album":{
+        "title": "HERE ARE THE ALBUMS OF",
+        "chansons": "SONGS"
+    },
+    "artiste":{
+        "title": "ADD AN ARTIST",
+        "rechercher": "RESEARCH",
+        "vider": "EMPTY LIST",
+        "concerts": "CONCERTS",
+        "albums": "ALBUMS"
+    },
+    "chanson":{
+        "title": "SONGS",
+        "info": "VIDEO AT THE END",
+        "ecouter": "LISTEN",
+        "video": "VIDEO"
+    }
+}

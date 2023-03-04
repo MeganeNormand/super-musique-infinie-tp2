@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { SpotifyService } from './services/spotify.service';
 
 @Component({
@@ -8,12 +9,18 @@ import { SpotifyService } from './services/spotify.service';
 })
 export class AppComponent {
   title = 'super-musique-infinie-tp2';
-
-  constructor(public spotify : SpotifyService){}
+  lang = 'fr';
+  constructor(public spotify : SpotifyService, public translator : TranslateService){
+    translator.setDefaultLang(this.lang);
+  }
 
 
   ngOnInit(){
     this.spotify.connect();
   }
   
+  changeLanguage(language : string): void{
+    this.lang = language;
+    this.translator.use(this.lang);
+  }
 }

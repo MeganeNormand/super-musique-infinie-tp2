@@ -23,8 +23,6 @@ export class ChansonComponent{
 
   videoSearchText : string = "";
 
-
-
   constructor(private spotify: SpotifyService, private route: ActivatedRoute, public youtube: YoutubeService, public sanitizer : DomSanitizer, public translator: TranslateService) {
     translator.setDefaultLang(this.language);
     this.albumId = this.route.snapshot.paramMap.get("albumId");
