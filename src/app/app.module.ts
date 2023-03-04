@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -12,6 +12,11 @@ import { FormsModule } from '@angular/forms';
 import { DatecustomPipe } from './pipes/datecustom.pipe';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DatePipe, registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { TrustPipe } from './pipes/trust.pipe';
+
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [		
@@ -20,7 +25,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     ConcertComponent,
     AlbumComponent,
     ChansonComponent,
-    DatecustomPipe
+    DatecustomPipe,
+    TrustPipe
    ],
   imports: [
     BrowserModule,
@@ -41,7 +47,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
       }
     })
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

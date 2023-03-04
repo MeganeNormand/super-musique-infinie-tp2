@@ -9,13 +9,9 @@ const API_KEY: string = "2b32475766802ac01eefda45e9e42ea0"
   providedIn: 'root'
 })
 
-
-
 export class BandsintownService {
 
   constructor(public http: HttpClient) { }
-
-
 
   async getConcert(artiste: string): Promise<Concert[]> {
 

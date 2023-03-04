@@ -43,8 +43,7 @@ export class ChansonComponent{
       if(this.artisteName != null && this.albumId != null){
         this.videoId = await this.youtube.getVideo(this.artisteName, albumName);
       }
-   
-    this.getSafeUrl(); 
+      this.videoUrl = youtubeURL + this.videoId;
   }
 
   getSafeUrl() : void{
